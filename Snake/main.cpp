@@ -7,7 +7,7 @@
 //
 
 #define GL_SILENCE_DEPRECATION
-#include <OpenGL/gl3.h>
+#include <OpenGL/gl.h>
 #include <GLUT/GLUT.h>
 #include "game.hpp"
 
@@ -18,11 +18,15 @@
 // Desired frame-per-secomd (fps)
 #define FPS 10
 
+extern short snakeDirection;
+
 void timerCallback(int);
 
 void displayCallback();
 
 void reshapeCallback(int, int);
+
+void keyboardCallback(int, int, int);
 
 void init() {
     // Setting the window color
@@ -33,7 +37,7 @@ void init() {
 int main (int argc, char** argv) {
     glutInit(&argc, argv);
     // Giving a default display color to the window
-    glutInitDisplayMode(GLUT_RGBA |  GLUT_DOUBLE);
+    glutInitDisplayMode(GLUT_RGB |  GLUT_DOUBLE);
     glutInitWindowSize(500, 500);
     // Creating the window name
     glutCreateWindow("🐍");
@@ -42,21 +46,18 @@ int main (int argc, char** argv) {
     // Reshaping the window based on (reshapeCallback)'s needs
     glutReshapeFunc(reshapeCallback);
     glutTimerFunc(0, timerCallback, 0);
+    // Keyboard inputting
+    glutSpecialFunc(keyboardCallback);
     init();
     glutMainLoop();
     return 0;
 }
 
-int index = 0;
 void displayCallback() {
     // Clearing the Color Buffer
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
-    glRectd(index, 10, index+1, 11);
-    index++;
-    if (index > 50) {
-        index = 0;
-    }
+    drawSnake();
     glutSwapBuffers();
 }
 
@@ -77,4 +78,29 @@ void timerCallback(int) {
     glutPostRedisplay();
     int millisecond = 1000/FPS;
     glutTimerFunc(millisecond, timerCallback, 0);
+}
+
+void keyboardCallback(int key, int, int) {
+    switch (key) {
+        case GLUT_KEY_UP:
+            if (snakeDirection != DOWN) {
+                snakeDirection = UP;
+            }
+            break;
+        case GLUT_KEY_DOWN:
+            if (snakeDirection != UP) {
+                snakeDirection = DOWN;
+            }
+            break;
+        case GLUT_KEY_LEFT:
+            if (snakeDirection != RIGHT) {
+                snakeDirection = LEFT;
+            }
+            break;
+        case GLUT_KEY_RIGHT:
+            if (snakeDirection != LEFT) {
+                snakeDirection = RIGHT;
+            }
+            break;
+    }
 }
