@@ -8,3 +8,6 @@
 #### 2. ⇧ for moving UP
 #### 3. ⇩ for moving DOWN
 #### 4. ⇦ for moving LEFT
+## GAME Walkthough GIF
+
+<img src="http://g.recordit.co/djmCnrnxsQ.gif" width=250><br>
