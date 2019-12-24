@@ -1,8 +1,8 @@
 # SnakeGL 🐍 : Snake Game using C++ & OpenGL/GLUT
 ## Gaming Rules:
-#### 1. Your score increases (+1) with each food item the snake eats (MAXIMUM = 60)
+#### 1. Your score increases (+1) with each food item(🍎) the snake eats (MAXIMUM = 60)
 #### 2. If the snake hits the walls, the game is over.
-## Gaming Controls:
+## Gaming Controls 🎮:
 #### Use the following keys:
 #### 1. ⇨ for moving RIGHT
 #### 2. ⇧ for moving UP
