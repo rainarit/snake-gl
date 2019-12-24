@@ -8,7 +8,9 @@
 
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
 #include <GLUT/GLUT.h>
+#include <cstdlib>
 #include "game.hpp"
 
 // Dimensions for the grid
@@ -16,9 +18,13 @@
 #define ROWS 50
 
 // Desired frame-per-secomd (fps)
-#define FPS 10
+#define FPS 3
 
 extern short snakeDirection;
+
+bool gameOver = false;
+
+int score = 0;
 
 void timerCallback(int);
 
@@ -58,7 +64,12 @@ void displayCallback() {
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
     drawSnake();
+    drawFood();
     glutSwapBuffers();
+    if (gameOver == true) {
+        printf("GAME OVER! SCORE: %d\n", score);
+        exit(0);
+    }
 }
 
 void reshapeCallback(int a, int b) {

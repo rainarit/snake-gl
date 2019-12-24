@@ -9,12 +9,20 @@
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl.h>
 #include <GLUT/GLUT.h>
+#include <ctime>
+#include <stdlib.h>
 #include "game.hpp"
 
 int gridX;
 int gridY;
 
 short snakeDirection = RIGHT;
+
+extern bool gameOver;
+
+bool food = true;
+int foodX;
+int foodY;
 
 int positionX = 25;
 int positionY = 25;
@@ -66,5 +74,31 @@ void drawSnake() {
     else if (snakeDirection == RIGHT) {
         positionX++;
     }
+    glColor3f(0.0, 0.0, 1.0);
     glRectd(positionX, positionY, positionX+1, positionY+1);
+    if (positionX == 0 || positionX == gridX-1 || positionY == 0 || positionY == gridY-1) {
+        gameOver = true;
+    }
+    if (positionX == foodX && positionY == foodY) {
+        food = true;
+    }
+}
+
+void randomize(int &x, int &y) {
+    int _maxX = gridX - 2;
+    int _maxY = gridY - 2;
+    int _min = 1;
+    srand(time(NULL));
+    x = _min + rand() % (_maxX - _min);
+    y = _min + rand() % (_maxY - _min);
+    
+}
+
+void drawFood() {
+    if (food == true) {
+        randomize(foodX, foodY);
+    }
+    food = false;
+    glColor3f(1.0, 0.0, 0.0);
+    glRectf(foodX, foodY, foodX+1, foodY+1);
 }
