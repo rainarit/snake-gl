@@ -15,9 +15,14 @@
 #define COLUMNS 50
 #define ROWS 50
 
-void display_callback();
+// Desired frame-per-secomd (fps)
+#define FPS 10
 
-void reshape_callback(int, int);
+void timerCallback(int);
+
+void displayCallback();
+
+void reshapeCallback(int, int);
 
 void init() {
     // Setting the window color
@@ -33,22 +38,29 @@ int main (int argc, char** argv) {
     // Creating the window name
     glutCreateWindow("🐍");
     // Overlay is established
-    glutDisplayFunc(display_callback);
-    // Reshaping the window based on (reshape_callback)'s needs
-    glutReshapeFunc(reshape_callback);
+    glutDisplayFunc(displayCallback);
+    // Reshaping the window based on (reshapeCallback)'s needs
+    glutReshapeFunc(reshapeCallback);
+    glutTimerFunc(0, timerCallback, 0);
     init();
     glutMainLoop();
     return 0;
 }
 
-void display_callback() {
+int index = 0;
+void displayCallback() {
     // Clearing the Color Buffer
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
+    glRectd(index, 10, index+1, 11);
+    index++;
+    if (index > 50) {
+        index = 0;
+    }
     glutSwapBuffers();
 }
 
-void reshape_callback(int a, int b) {
+void reshapeCallback(int a, int b) {
     glViewport(0, 0, (GLsizei)a, (GLsizei)b);
     // Allowing the view to be shown in matrix format
     glMatrixMode(GL_PROJECTION);
@@ -58,4 +70,11 @@ void reshape_callback(int a, int b) {
     glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
     // Switching back to model view matrix
     glMatrixMode(GL_MODELVIEW);
+}
+
+void timerCallback(int) {
+    // Gives an OpenGL an urge to call displayCallback()
+    glutPostRedisplay();
+    int millisecond = 1000/FPS;
+    glutTimerFunc(millisecond, timerCallback, 0);
 }
