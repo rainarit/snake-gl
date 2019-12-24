@@ -1,6 +1,6 @@
 //
 //  game.cpp
-//  Snake
+//  SnakeGL
 //
 //  Created by Ritik Raina on 12/24/19.
 //  Copyright © 2019 rraina. All rights reserved.
@@ -16,16 +16,20 @@
 int gridX;
 int gridY;
 
+int snakeLength = 5;
+
 short snakeDirection = RIGHT;
 
 extern bool gameOver;
+
+extern int score;
 
 bool food = true;
 int foodX;
 int foodY;
 
-int positionX = 25;
-int positionY = 25;
+int positionX[60] = {25, 25, 25, 25, 25};
+int positionY[60] = {25, 24, 23, 22, 21};
 
 // Creating a grid
 void initGrid(int x, int y) {
@@ -62,24 +66,40 @@ void drawGrid() {
 }
 
 void drawSnake() {
+    for (int i = snakeLength - 1; i > 0; i--) {
+        positionX[i] = positionX[i-1];
+        positionY[i] = positionY[i-1];
+    }
     if (snakeDirection == UP) {
-        positionY++;
+        positionY[0]++;
     }
     else  if (snakeDirection == DOWN) {
-        positionY--;
+        positionY[0]--;
     }
     else if (snakeDirection == LEFT) {
-        positionX--;
+        positionX[0]--;
     }
     else if (snakeDirection == RIGHT) {
-        positionX++;
+        positionX[0]++;
     }
-    glColor3f(0.0, 0.0, 1.0);
-    glRectd(positionX, positionY, positionX+1, positionY+1);
-    if (positionX == 0 || positionX == gridX-1 || positionY == 0 || positionY == gridY-1) {
+    for (int i = 0; i < snakeLength; i++) {
+        if (i == 0) {
+            glColor3f(0.0, 0.0, 1.0);
+        }
+        else {
+            glColor3f(0.0, 1.0, 0.0);
+        }
+        glRectd(positionX[i], positionY[i], positionX[i]+1, positionY[i]+1);
+    }
+    if (positionX[0] == 0 || positionX[0] == gridX-1 || positionY[0] == 0 || positionY[0] == gridY-1) {
         gameOver = true;
     }
-    if (positionX == foodX && positionY == foodY) {
+    if (positionX[0] == foodX && positionY[0] == foodY) {
+        score++;
+        snakeLength++;
+        if(snakeLength > MAX) {
+            snakeLength = MAX;
+        }
         food = true;
     }
 }

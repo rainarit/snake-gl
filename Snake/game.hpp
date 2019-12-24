@@ -14,6 +14,8 @@
 #define LEFT -2
 #define RIGHT 2
 
+#define MAX 60
+
 #include <stdio.h>
 
 void initGrid(int, int);

@@ -18,7 +18,7 @@
 #define ROWS 50
 
 // Desired frame-per-secomd (fps)
-#define FPS 3
+#define FPS 6
 
 extern short snakeDirection;
 
@@ -44,7 +44,7 @@ int main (int argc, char** argv) {
     glutInit(&argc, argv);
     // Giving a default display color to the window
     glutInitDisplayMode(GLUT_RGB |  GLUT_DOUBLE);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(1000, 1000);
     // Creating the window name
     glutCreateWindow("🐍");
     // Overlay is established
