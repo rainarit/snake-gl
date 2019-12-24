@@ -9,6 +9,11 @@
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl3.h>
 #include <GLUT/GLUT.h>
+#include "game.hpp"
+
+// Dimensions for the grid
+#define COLUMNS 50
+#define ROWS 50
 
 void display_callback();
 
@@ -17,6 +22,7 @@ void reshape_callback(int, int);
 void init() {
     // Setting the window color
     glClearColor(0.0, 0.0, 0.0, 1.0);
+    initGrid(COLUMNS, ROWS);
 }
 
 int main (int argc, char** argv) {
@@ -38,6 +44,7 @@ int main (int argc, char** argv) {
 void display_callback() {
     // Clearing the Color Buffer
     glClear(GL_COLOR_BUFFER_BIT);
+    drawGrid();
     glutSwapBuffers();
 }
 
@@ -48,7 +55,7 @@ void reshape_callback(int a, int b) {
     // Make sure that there are no changes made to the matrix (default)
     glLoadIdentity();
     // Setting an orthographic projection (2D)
-    glOrtho(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+    glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
     // Switching back to model view matrix
     glMatrixMode(GL_MODELVIEW);
 }

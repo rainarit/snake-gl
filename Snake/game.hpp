@@ -11,4 +11,7 @@
 
 #include <stdio.h>
 
+void initGrid(int, int);
+void drawGrid();
+
 #endif /* game_hpp */
