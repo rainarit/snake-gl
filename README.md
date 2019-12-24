@@ -10,4 +10,4 @@
 #### 4. ⇦ for moving LEFT
 ## Game Walkthough GIF
 
-<img src="http://g.recordit.co/djmCnrnxsQ.gif" width=400><br>
+<img src="http://g.recordit.co/djmCnrnxsQ.gif" width=1000><br>
