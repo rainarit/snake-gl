@@ -16,11 +16,13 @@
 int gridX;
 int gridY;
 
-int snakeLength = 5;
+int snakeLength = 1;
 
 short snakeDirection = RIGHT;
 
 extern bool gameOver;
+
+extern int FPS;
 
 extern int score;
 

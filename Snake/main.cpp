@@ -18,13 +18,17 @@
 #define ROWS 50
 
 // Desired frame-per-secomd (fps)
-#define FPS 6
+static int FPS = 6;
+
+int index = 6;
 
 extern short snakeDirection;
 
 bool gameOver = false;
 
 int score = 0;
+
+bool level = false;
 
 void timerCallback(int);
 
@@ -59,12 +63,24 @@ int main (int argc, char** argv) {
     return 0;
 }
 
+bool levelUp() {
+    if (index + score == FPS) {
+        // Do nothing
+    }
+    else if (index + score > FPS) {
+        FPS = FPS + 1;
+        printf("Level Up: %d\n", (FPS - 6));
+    }
+    return true;
+}
+
 void displayCallback() {
     // Clearing the Color Buffer
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
     drawSnake();
     drawFood();
+    levelUp();
     glutSwapBuffers();
     if (gameOver == true) {
         printf("GAME OVER! SCORE: %d\n", score);
