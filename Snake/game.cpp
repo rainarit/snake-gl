@@ -93,8 +93,19 @@ void drawSnake() {
         }
         glRectd(positionX[i], positionY[i], positionX[i]+1, positionY[i]+1);
     }
-    if (positionX[0] == 0 || positionX[0] == gridX-1 || positionY[0] == 0 || positionY[0] == gridY-1) {
-        gameOver = true;
+    if (positionX[0] <= 0 || positionX[0] >= gridX-1 || positionY[0] <= 0 || positionY[0] >= gridY-1) {
+        if (positionX[0] < 0) {
+            positionX[0] = gridX - 1;
+        }
+        else if (positionX[0] > gridX) {
+            positionX[0] = 0;
+        }
+        else if (positionY[0] < 0) {
+            positionY[0] = gridY;
+        }
+        else if (positionY[0] > gridY) {
+            positionY[0] = 0;
+        }
     }
     if (positionX[0] == foodX && positionY[0] == foodY) {
         score++;
