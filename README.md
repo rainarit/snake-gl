@@ -9,4 +9,4 @@
 #### 3. ⇩ for moving DOWN
 #### 4. ⇦ for moving LEFT
 ## Game Walkthough GIF
-<img src="http://g.recordit.co/djmCnrnxsQ.gif" width=1000><br>
+<img src="https://gfycat.com/politethisaffenpinscher" width=1000><br>
