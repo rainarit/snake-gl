@@ -30,7 +30,7 @@ bool food = true;
 int foodX;
 int foodY;
 
-int positionX[60] = {25, 25, 25, 25, 25};
+int positionX[60] = {25, 24, 23, 22, 21};
 int positionY[60] = {25, 24, 23, 22, 21};
 
 // Creating a grid
