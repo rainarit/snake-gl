@@ -93,11 +93,11 @@ void drawSnake() {
         }
         glRectd(positionX[i], positionY[i], positionX[i]+1, positionY[i]+1);
     }
-    if (positionX[0] <= 0 || positionX[0] >= gridX-1 || positionY[0] <= 0 || positionY[0] >= gridY-1) {
+    if (positionX[0] <= 0 || positionX[0] >= gridX || positionY[0] <= 0 || positionY[0] >= gridY) {
         printf("positionX: %d\n", positionX[0]);
         printf("positionY: %d\n", positionY[0]);
         if (positionX[0] < 0) {
-            positionX[0] = gridX - 1;
+            positionX[0] = gridX;
         }
         else if (positionX[0] >= gridX) {
             positionX[0] = 0;
@@ -109,7 +109,8 @@ void drawSnake() {
             positionY[0] = 0;
         }
     }
-    for (int i = snakeLength; i > 0; i--) {
+    for (int i = snakeLength - 1; i > 0; i--) {
+        
         if (positionX[0] == positionX[i] && positionY[0] == positionY[i]) {
             gameOver = true;
         }
