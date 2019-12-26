@@ -11,7 +11,6 @@
 		E7FF3C7023B1F881006E736D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FF3C6F23B1F880006E736D /* OpenGL.framework */; };
 		E7FF3C7223B1F890006E736D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FF3C7123B1F890006E736D /* GLUT.framework */; };
 		E7FF3C7523B20E7A006E736D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FF3C7323B20E7A006E736D /* game.cpp */; };
-		E7FF3C7923B276DD006E736D /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = E7FF3C7823B276DD006E736D /* Makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +32,6 @@
 		E7FF3C7123B1F890006E736D /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		E7FF3C7323B20E7A006E736D /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		E7FF3C7423B20E7A006E736D /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
-		E7FF3C7823B276DD006E736D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 		E7FF3C6623B1F81C006E736D /* Snake */ = {
 			isa = PBXGroup;
 			children = (
-				E7FF3C7823B276DD006E736D /* Makefile */,
 				E7FF3C6723B1F81C006E736D /* main.cpp */,
 				E7FF3C7323B20E7A006E736D /* game.cpp */,
 				E7FF3C7423B20E7A006E736D /* game.hpp */,
@@ -143,7 +140,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7FF3C7923B276DD006E736D /* Makefile in Sources */,
 				E7FF3C6823B1F81C006E736D /* main.cpp in Sources */,
 				E7FF3C7523B20E7A006E736D /* game.cpp in Sources */,
 			);
