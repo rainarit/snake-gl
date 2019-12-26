@@ -16,7 +16,7 @@
 int gridX;
 int gridY;
 
-int snakeLength = 1;
+int snakeLength = 5;
 
 short snakeDirection = RIGHT;
 
@@ -89,22 +89,29 @@ void drawSnake() {
             glColor3f(0.0, 0.0, 1.0);
         }
         else {
-            glColor3f(0.0, 1.0, 0.0);
+            glColor3f(i*0.1, i*0.1, i*0.1);
         }
         glRectd(positionX[i], positionY[i], positionX[i]+1, positionY[i]+1);
     }
     if (positionX[0] <= 0 || positionX[0] >= gridX-1 || positionY[0] <= 0 || positionY[0] >= gridY-1) {
+        printf("positionX: %d\n", positionX[0]);
+        printf("positionY: %d\n", positionY[0]);
         if (positionX[0] < 0) {
             positionX[0] = gridX - 1;
         }
-        else if (positionX[0] > gridX) {
+        else if (positionX[0] >= gridX) {
             positionX[0] = 0;
         }
         else if (positionY[0] < 0) {
             positionY[0] = gridY;
         }
-        else if (positionY[0] > gridY) {
+        else if (positionY[0] >= gridY) {
             positionY[0] = 0;
+        }
+    }
+    for (int i = snakeLength; i > 0; i--) {
+        if (positionX[0] == positionX[i] && positionY[0] == positionY[i]) {
+            gameOver = true;
         }
     }
     if (positionX[0] == foodX && positionY[0] == foodY) {
@@ -124,7 +131,6 @@ void randomize(int &x, int &y) {
     srand(time(NULL));
     x = _min + rand() % (_maxX - _min);
     y = _min + rand() % (_maxY - _min);
-    
 }
 
 void drawFood() {
