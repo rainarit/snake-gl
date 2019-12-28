@@ -89,13 +89,11 @@ void drawSnake() {
             glColor3f(0.0, 0.0, 1.0);
         }
         else {
-            glColor3f(i*0.1, i*0.1, i*0.1);
+            glColor3f(i*0.05, i*0.5, i*0.05);
         }
         glRectd(positionX[i], positionY[i], positionX[i]+1, positionY[i]+1);
     }
     if (positionX[0] <= 0 || positionX[0] >= gridX || positionY[0] <= 0 || positionY[0] >= gridY) {
-        printf("positionX: %d\n", positionX[0]);
-        printf("positionY: %d\n", positionY[0]);
         if (positionX[0] < 0) {
             positionX[0] = gridX;
         }

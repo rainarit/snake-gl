@@ -8,7 +8,6 @@
 
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl.h>
-#include <OpenGL/gl3.h>
 #include <GLUT/GLUT.h>
 #include <cstdlib>
 #include "game.hpp"
@@ -17,7 +16,7 @@
 #define COLUMNS 50
 #define ROWS 50
 
-// Desired frame-per-secomd (fps)
+// Desired frame-per-second (fps)
 static int FPS = 6;
 
 int index = 6;
