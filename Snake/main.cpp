@@ -17,7 +17,7 @@
 #define ROWS 50
 
 // Desired frame-per-second (fps)
-static int FPS = 6;
+static int FPS = 8;
 
 int index = 6;
 
@@ -67,7 +67,7 @@ bool levelUp() {
         // Do nothing
     }
     else if (index + score > FPS) {
-        FPS = FPS + 1;
+        FPS = FPS + 0.5;
         printf("Level Up: %d\n", (FPS - 6));
     }
     return true;

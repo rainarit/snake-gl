@@ -48,7 +48,7 @@ void unit(int x, int y) {
     }
     else {
         glLineWidth(1.0);
-        glColor3f(0.5, 1.0, 0.5);
+        glColor3f(1.0, 1.0, 1.0);
     }
     
     glBegin(GL_LINE_LOOP);
@@ -137,6 +137,6 @@ void drawFood() {
         randomize(foodX, foodY);
     }
     food = false;
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(1.0, 1.0, 0.0);
     glRectf(foodX, foodY, foodX+1, foodY+1);
 }
